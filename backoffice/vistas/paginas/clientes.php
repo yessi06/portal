@@ -48,7 +48,6 @@
                 </table>
             </div>
         </div>
-    </section>
 </div>
 
 <!-- Modal Agregar Cliente -->

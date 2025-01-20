@@ -34,10 +34,8 @@ class ControladorUsuarios
 					"nombre" => $_POST["registroNombre"],
 					"email" => $_POST["registroEmail"],
 					"password" => $encriptar,
-					"suscripcion" => 0,
 					"verificacion" => 0,
-					"email_encriptado" => $encriptarEmail,
-					"patrocinador" => $_POST["patrocinador"]
+					"email_encriptado" => $encriptarEmail
 				);
 
 				$respuesta = ModeloUsuarios::mdlRegistroUsuario($tabla, $datos);
