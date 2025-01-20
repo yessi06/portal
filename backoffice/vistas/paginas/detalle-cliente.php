@@ -1,8 +1,26 @@
 <?php
-if(isset($_GET["id"])){
-    $item = "id";
-    $valor = $_GET["id"];
-    $cliente = ControladorClientes::ctrMostrarCliente($item, $valor);
+if(!isset($_GET["id"])) {
+    echo '<script>window.location = "clientes";</script>';
+    return;
+}
+
+$cliente = ControladorClientes::ctrMostrarCliente("id_cliente", $_GET["id"]);
+
+if(!$cliente) {
+    echo '<script>
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Cliente no encontrado",
+            showConfirmButton: true,
+            confirmButtonText: "Cerrar"
+        }).then((result) => {
+            if(result.value) {
+                window.location = "clientes";
+            }
+        });
+    </script>';
+    return;
 }
 ?>
 
@@ -13,40 +31,80 @@ if(isset($_GET["id"])){
                 <div class="col-sm-6">
                     <h1>Detalle del Cliente</h1>
                 </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="inicio">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="clientes">Clientes</a></li>
+                        <li class="breadcrumb-item active">Detalle del Cliente</li>
+                    </ol>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="content">
         <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Información del Cliente</h3>
+                <div class="card-tools">
+                    <a href="clientes" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Volver
+                    </a>
+                </div>
+            </div>
             <div class="card-body">
-                <?php if(isset($cliente)): ?>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3>Información Personal</h3>
-                            <p><strong>Nombre:</strong> <?php echo $cliente["nombre"]; ?></p>
-                            <p><strong>Email:</strong> <?php echo $cliente["email"]; ?></p>
-                            <p><strong>Teléfono:</strong> <?php echo $cliente["telefono"]; ?></p>
-                            <p><strong>Dirección:</strong> <?php echo $cliente["direccion"]; ?></p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nombre:</label>
+                            <p class="form-control-static"><?php echo $cliente["nombre"]; ?></p>
                         </div>
-                        <div class="col-md-6">
-                            <h3>Información Adicional</h3>
-                            <p><strong>Fecha de Registro:</strong> <?php echo $cliente["fecha_registro"]; ?></p>
-                            <p><strong>Última Actualización:</strong> <?php echo $cliente["ultima_actualizacion"]; ?></p>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <p class="form-control-static"><?php echo $cliente["correo"]; ?></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono:</label>
+                            <p class="form-control-static"><?php echo $cliente["celular"]; ?></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Origen:</label>
+                            <p class="form-control-static"><?php echo $cliente["origen"] ?? 'N/A'; ?></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha de Registro:</label>
+                            <p class="form-control-static">
+                                <?php echo $cliente["fecha"] ? date("d/m/Y H:i", strtotime($cliente["fecha"])) : 'N/A'; ?>
+                            </p>
                         </div>
                     </div>
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <a href="clientes" class="btn btn-secondary">Volver</a>
-                            <a href="index.php?pagina=editar-cliente&id=<?php echo $cliente["id"]; ?>" class="btn btn-primary">Editar Cliente</a>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Estado:</label>
+                            <p class="form-control-static"><?php echo $cliente["estado"] ?? 'N/A'; ?></p>
+                        </div>
+                        <div class="form-group">
+                            <label>País:</label>
+                            <p class="form-control-static"><?php echo $cliente["pais"] ?? 'N/A'; ?></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Código País:</label>
+                            <p class="form-control-static"><?php echo $cliente["codigo_pais"] ?? 'N/A'; ?></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Ciudad:</label>
+                            <p class="form-control-static"><?php echo $cliente["ciudad"] ?? 'N/A'; ?></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Dirección:</label>
+                            <p class="form-control-static"><?php echo $cliente["direccion"] ?? 'N/A'; ?></p>
                         </div>
                     </div>
-                <?php else: ?>
-                    <div class="alert alert-warning">
-                        Cliente no encontrado
-                    </div>
-                <?php endif; ?>
+                </div>
             </div>
         </div>
     </section>
-</div> 
+</div>
+
+<!-- SweetAlert2 -->
+<script src="vistas/plugins/sweetalert2/sweetalert2.all.min.js"></script> 
