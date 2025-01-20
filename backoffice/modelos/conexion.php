@@ -5,15 +5,21 @@ class Conexion
 
 	static public function conectar()
 	{
+		try {
+			$link = new PDO(
+				"mysql:host=localhost;dbname=crm",
+				"root",
+				"12345",
+				array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+			);
 
-		$link = new PDO(
-			"mysql:host=localhost;dbname=crm",
-			"root",
-			""
-		);
+			$link->exec("set names utf8");
 
-		$link->exec("set names utf8");
+			return $link;
 
-		return $link;
+		} catch (PDOException $e) {
+			echo "Error de conexión: " . $e->getMessage();
+			return null;
+		}
 	}
 }

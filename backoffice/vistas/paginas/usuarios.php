@@ -13,7 +13,6 @@ $valor = null;
 $usuarios = ControladorUsuarios::ctrMostrarusuarios($item, $valor);
 ?>
 
-
 <div class="content-wrapper" style="min-height: 1058.31px;">
   <section class="content-header">
     <div class="container-fluid">
@@ -55,14 +54,8 @@ $usuarios = ControladorUsuarios::ctrMostrarusuarios($item, $valor);
               <th>Nombre</th>
               <th>Email</th>
               <th>País</th>
-              <th>Suscripción</th>
-              <th>ID Suscripción</th>
-              <th>Ciclo de pago</th>
-              <th>Enlace Afiliado</th>
-              <th>Patrocinador</th>
-              <th>Email de PayPal</th>
-              <th>Última actualización</th>
-              <th>Fecha de vencimiento</th>
+              <th>Verificacion</th>
+              <th>Fecha de Creacion</th>
             </tr>
           </thead>
           <tbody>
@@ -75,14 +68,8 @@ $usuarios = ControladorUsuarios::ctrMostrarusuarios($item, $valor);
               <td><?php echo $value["nombre"] ?></td>
               <td><?php echo $value["email"] ?></td>
               <td><?php echo $value["pais"] ?></td>
-              <td><?php echo $value["suscripcion"] ?></td>
-              <td><?php echo $value["id_suscripcion"] ?></td>
-              <td><?php echo $value["ciclo_pago"] ?></td>
-              <td><?php echo $value["enlace_afiliado"] ?></td>
-              <td><?php echo $value["patrocinador"] ?></td>
-              <td><?php echo $value["paypal"] ?></td>
+              <td><?php echo $value["verificacion"] ?></td>
               <td><?php echo $value["fecha"] ?></td>
-              <td><?php echo $value["vencimiento"] ?></td>
             </tr>
             
           <?php endforeach ?> -->

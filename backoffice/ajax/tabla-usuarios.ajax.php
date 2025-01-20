@@ -37,10 +37,10 @@ class TablaUsuarios
 				SUSCRIPCIÓN
 				=============================================*/
 
-				if ($value["suscripcion"] == 0) {
-					$suscripcion = "<button type='button' class='btn btn-danger btn-sm'>Desactivada</button>";
+				if ($value["verificacion"] == 0) {
+					$verificacion = "<button type='button' class='btn btn-danger btn-sm'>Desactivada</button>";
 				} else {
-					$suscripcion = "<button type='button' class='btn btn-success btn-sm'>Activada</button>";
+					$verificacion = "<button type='button' class='btn btn-success btn-sm'>Activada</button>";
 				}
 
 				$datosJson .= '[
@@ -50,16 +50,8 @@ class TablaUsuarios
 				       "' . $value["nombre"] . '",
 				       "' . $value["email"] . '",
 				       "' . $value["pais"] . '",
-				       "' . $suscripcion . '",
-				       "' . $value["id_suscripcion"] . '",
-				       "' . $value["ciclo_pago"] . '",
-				       "' . $value["enlace_afiliado"] . '",
-				       "' . $value["patrocinador"] . '",
-				       "' . $value["paypal"] . '",
-					   "' . $value["fecha"] . '",
-					   "' . $value["vencimiento"] . '"
-
-
+				       "' . $verificacion . '",
+					   "' . $value["fecha"] . '"
 				],';
 			}
 		}
