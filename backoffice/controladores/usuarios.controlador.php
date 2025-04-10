@@ -268,7 +268,7 @@ class ControladorUsuarios
 							swal({
 									type:"error",
 								  	title: "¡ERROR!",
-								  	text: "¡El correo electrónico aún no ha sido verificado, por favor revise la bandeja de entrada o la carpeta SPAM de su correo electrónico para verificar la cuenta, o contáctese con nuestro soporte a info@academyoflife.com!",
+								  	text: "¡El correo electrónico aún no ha sido verificado, por favor revise la bandeja de entrada o la carpeta SPAM de su correo electrónico para verificar la cuenta, o contáctese con nuestro soporte a perseshub@gmail.com!",
 								  	showConfirmButton: true,
 									confirmButtonText: "Cerrar"
 								  

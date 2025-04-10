@@ -18,13 +18,14 @@ class ModeloUsuarios
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
 		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
-		$stmt->bindParam(":pais", $datos["pais"], PDO::PARAM_STR);
-		$stmt->bindParam(":codigo_pais", $datos["codigo_pais"], PDO::PARAM_STR);
-		$stmt->bindParam(":ciudad", $datos["ciudad"], PDO::PARAM_STR);
-		$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
-		$stmt->bindParam(":telefono_movil", $datos["telefono_movil"], PDO::PARAM_STR);
 		$stmt->bindParam(":verificacion", $datos["verificacion"], PDO::PARAM_STR);
 		$stmt->bindParam(":email_encriptado", $datos["email_encriptado"], PDO::PARAM_STR);
+
+		// $stmt->bindParam(":pais", $datos["pais"], PDO::PARAM_STR);
+		// $stmt->bindParam(":codigo_pais", $datos["codigo_pais"], PDO::PARAM_STR);
+		// $stmt->bindParam(":ciudad", $datos["ciudad"], PDO::PARAM_STR);
+		// $stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
+		// $stmt->bindParam(":telefono_movil", $datos["telefono_movil"], PDO::PARAM_STR);
 
 		if ($stmt->execute()) {
 			return "ok";
