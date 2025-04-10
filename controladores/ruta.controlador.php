@@ -1,11 +1,12 @@
 <?php
 
-class ControladorRuta{
+class ControladorRuta
+{
 
-	static public function ctrRuta(){
+	static public function ctrRuta()
+	{
 
-		return "http://localhost/crm/";
-
+		$config = include(__DIR__ . '/../.env.php');
+		return $config['APP_URL'];
 	}
-
 }
