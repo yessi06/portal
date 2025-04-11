@@ -16,12 +16,13 @@ class Conexion
 	{
 		try {
 			$host = self::getEnv('DB_HOST');
+			$port = self::getEnv('DB_PORT') ?? '3306';
 			$dbname = self::getEnv('DB_NAME');
 			$user = self::getEnv('DB_USER');
 			$pass = self::getEnv('DB_PASS');
 
 			$link = new PDO(
-				"mysql:host=$host;dbname=$dbname",
+				"mysql:host=$host;port=$port;dbname=$dbname",
 				$user,
 				$pass,
 				array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
